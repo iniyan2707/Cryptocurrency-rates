@@ -41,10 +41,14 @@ class CoinData {
 
     if (response.statusCode == 200) {
       String data = response.body;
-      return jsonDecode(data);
+      var coinData = jsonDecode(data);
+      var r = coinData['rate'];
+
+      return r.toStringAsFixed(0);
     } else {
       print(response.statusCode);
-      throw 'cant get data';
+
+      return 'Price not available';
     }
   }
 }
